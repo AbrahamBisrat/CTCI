@@ -33,6 +33,4 @@ public class PalindromePermutation {
 		seen.remove(' ');
 		return seen.size() <= 1;
 	}
-	// generate permutations
-	// check if it is a palindrome?
 }
