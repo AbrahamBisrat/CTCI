@@ -24,8 +24,7 @@ public class OneAway {
 	 * If the difference is less than or equal to one. one of the operations will inevitably work.
 	 * otherwise return false; */
 	private static boolean oneAway(String x, String y) {
-		// put x and y into a map
-		// and if the diff in length is more than one return false;
+		// put x and y into a map, and if the difference in length is more than one return false;
 		Map<Character, Integer> seen  = new HashMap<>();
 		for(char each : x.toCharArray())
 			seen.put(each, seen.getOrDefault(each, 0) + 1);
