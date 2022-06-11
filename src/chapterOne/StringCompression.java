@@ -13,6 +13,7 @@ public class StringCompression {
 	public static void main(String[] args) {
 		p(compress("aabccccccaaa"));
 		p(compress("abcdddefgg"));
+		p(compress("abcdefghijklmnopqrstuvwxyz"));
 	}
 	private static String compress(String input) {
 		if(input.length() == 0) throw new IllegalArgumentException("Invalid input");

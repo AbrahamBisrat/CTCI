@@ -1,7 +1,5 @@
 package chapterOne;
 
-import java.util.Arrays;
-
 /**
  * replace all spaces in a string with %20.
  * Example: 'hey there' -> 'hey%20there'
