@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
  */
-public class ArraysNStrings {
+public class ISUNIQUE {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
 		String[] testString = {"abcdef", "ggabcdefa", "abccdef"};//, new String()};
