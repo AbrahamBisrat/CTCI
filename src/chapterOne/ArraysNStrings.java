@@ -17,7 +17,11 @@ public class ArraysNStrings {
 		String[] testString = {"abcdef", "ggabcdefa", "abccdef"};//, new String()};
 		isUniqueWithMapTest(testString);p("\n");
 		isUniqueNoMapTest(testString);
-		
+		isUniqueAsciiTest(testString);
+	}
+	private static void isUniqueAsciiTest(String[] testString) {
+		for(String each : testString)
+			p(isUniqueAscii(each));
 	}
 	private static void isUniqueNoMapTest(String[] testString) {
 		for(String each : testString)
@@ -33,10 +37,10 @@ public class ArraysNStrings {
 		Set<Character> seen = new HashSet<>();
 		for(char each : string.toCharArray()) {
 			if(seen.contains(each))
-				return true;
+				return false;
 			seen.add(each);
 		}
-		return false;
+		return true;
 	}
 	// No additional data-structures used
 	private static boolean isUniqueNoMap(String string) {
@@ -47,10 +51,22 @@ public class ArraysNStrings {
 //		p(Arrays.toString(input));
 		for(int i = 1; i < string.length(); i++){
 			if(prev == input[i])
-				return true;
+				return false;
 			prev = string.charAt(i);
 		}
-		return false;
+		return true;
+	}
+	// Nifty solution via ASCII interpretation - Map the entire spectrum into an array of 128 bits
+	// Example: a - map[96] ...
+	private static boolean isUniqueAscii(String input) {
+		if(input.length() > 128) return false;
+		boolean[] charSet = new boolean[128];
+		for(int i = 0; i < input.length(); i++) {
+			int val = input.charAt(i);
+			if(charSet[val]) return false;
+			charSet[val] = true;
+		}
+		return true;	
 	}
 	
 }
