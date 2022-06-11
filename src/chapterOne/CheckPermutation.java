@@ -39,13 +39,11 @@ public class CheckPermutation {
 	// O(NlogN); sort and evaluate equality
 	private static boolean checkPermutationSortAndComp(String a, String b) {
 		if(a.length() != b.length()) throw new UnsupportedOperationException("unsupported arguments");
-		char[] first = a.toCharArray();
-		Arrays.sort(first);
-		char[] second = b.toCharArray();
-		Arrays.sort(second);
-		for(int i = 0; i < first.length; i++)
-			if(first[i] != second[i])
-				return false;
-		return true;
+		return sort(a).equals(sort(b));
+	}
+	static String sort(String input) { 
+		char[] temp = input.toCharArray(); 
+		Arrays.sort(temp);
+		return Arrays.toString(temp);
 	}
 }
