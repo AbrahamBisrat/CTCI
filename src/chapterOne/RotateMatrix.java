@@ -10,9 +10,9 @@ import java.util.Arrays;
  * Can you do this in place? aka - no extra memory - aka - swap?
  * 
  * solution: 
- * Exampe:  so the rotation by 90 degrees would mean swapping of the i and j terms
+ * Example:  so the rotation by 90 degrees would mean swapping of the i and j terms
  * 			but this would convert axb matrix to bxa:
- * 		
+ * 
  * Therefore in-place swapping would only work for matrix size of nxn 
  * In other words the length and height should be same to do the rotation in place.		
  * 	++++++
@@ -36,19 +36,26 @@ public class RotateMatrix {
 		for(int[] column : grid)
 			p(Arrays.toString(column));
 		p("\n\n");
+		
 		for(int[] column : rotate90(grid))
 			p(Arrays.toString(column));
 	}
 	private static int[][] rotate90(int[][] matrix){
-		if(matrix[0].length==matrix[1].length) {// square matrix - In place swap
-			for(int i=0; i< matrix[0].length; i++) {
-				for(int j=i; j < matrix[1].length; j++) {
-					int temp = matrix[i][j];
-					matrix[i][j] = matrix[j][i];
-					matrix[j][i] = temp;
-				}
+		for(int i=0; i< matrix.length; i++)
+			for(int j = 0; j < matrix[1].length; j++)
+				swap(matrix, i, j);
+		for(int i = 0; i < matrix.length; i++) {
+			for(int j = 0; j < matrix[0].length / 2; j++) {
+				int temp = matrix[i][j];
+				matrix[i][j] = matrix[i][matrix[0].length - 1 - j];
+				matrix[i][matrix[0].length - 1 - j] = temp;
 			}
 		}
 		return matrix;
+	}
+	private static void swap(int[][] matrix, int i, int j) {
+		int temp = matrix[i][j];
+		matrix[i][j] = matrix[j][i];
+		matrix[j][i] = temp;
 	}
 }
