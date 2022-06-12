@@ -27,7 +27,6 @@ public class ZeroMatrix {
 		grid = zeroMatrixSpaceOptimized(grid); p("");
 		for(int[] column : grid)
 			p(Arrays.toString(column));
-		
 	}
 	public static int[][] zeroMatrix(int[][] grid) {
 		List<Pair> nullables = new ArrayList<>();
