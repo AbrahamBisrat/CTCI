@@ -29,7 +29,7 @@ public class RotateMatrix {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
 		int[][] grid = new int[3][3];
-		int count=0;
+		int count=1;
 		for(int i = 0; i < 3; i++)
 			for(int j = 0; j < 3; j++)
 				grid[i][j]=count++;
