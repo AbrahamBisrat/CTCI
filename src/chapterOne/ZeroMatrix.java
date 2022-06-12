@@ -1,6 +1,8 @@
 package chapterOne;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Write an algorithm such that if an element in an M x N matrix is 0, 
@@ -24,22 +26,26 @@ public class ZeroMatrix {
 			p(Arrays.toString(column));
 	}
 	public static int[][] zeroMatrix(int[][] grid) {
+		List<Pair> nullables = new ArrayList<>();
 		for(int i = 0; i < grid.length; i++)
 			for(int j = 0; j < grid[i].length; j++)
 				if(grid[i][j]==0)
-					grid = nullifyCardinalElements(grid, i, j);
+					nullables.add(new Pair(i,j));
+		for(Pair each : nullables)
+			grid = nullifyCardinalElements(grid, each.x, each.y);
 		return grid;
 	}
-	private static boolean onceFlag = true;
 	public static int[][] nullifyCardinalElements(int[][] grid, int i, int j) {
-		if(onceFlag) {
-			int[][] temp = grid;
-			for(int x = 0; x < grid[i].length; x++)
-				grid[x][j]*=0;
-			for(int y = 0; y < grid[j].length; y++)
-				temp[i][y]*=0;
-			onceFlag=!onceFlag;
-		}
+		int[][] temp = grid;
+		for(int x = 0; x < grid[i].length; x++)
+			grid[x][j]*=0;
+		for(int y = 0; y < grid[j].length; y++)
+			temp[i][y]*=0;
 		return grid;
+	}
+	static class Pair {
+		int x;
+		int y;
+		Pair(int i, int j) { x = i; y = j; }
 	}
 }
