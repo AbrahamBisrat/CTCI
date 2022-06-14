@@ -33,6 +33,7 @@ public class TopKFrequentElements {
 		 * PriorityQueue but rather sorting it via the key */
 		PriorityQueue<Map.Entry<Integer, Integer>> minHeap = 
 				new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
+		
 		for(Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
 			minHeap.add(entry);
 			if(minHeap.size() > k)
@@ -57,5 +58,4 @@ public class TopKFrequentElements {
 		while(!minHeap.isEmpty()) resultSet.add(minHeap.poll().getKey());
 		return resultSet;
 	}
-	
 }
