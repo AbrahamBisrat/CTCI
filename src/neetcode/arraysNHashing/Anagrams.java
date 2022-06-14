@@ -1,4 +1,4 @@
-package neetcode;
+package neetcode.arraysNHashing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
  */
-public class ArraysNHashing {
+public class Anagrams {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
 //		p(isAnagram("anagram", "nagrama"));
@@ -106,6 +106,7 @@ public class ArraysNHashing {
 		resultSet.addAll(freqMap.values());
 		return resultSet;
 	}
+	
 }
 
 
