@@ -52,10 +52,12 @@ public class ValidSodoku {
 				,{'.','.','.','.','.','2','.','.','.'}
 				,{'.','2','.','9','.','.','.','.','.'}
 				,{'.','.','4','.','.','.','.','.','.'}};
-		p(isValidSodoku(board));
-		p(isValidSodoku(board2));
+		p(isValidSudoku(board));
+		p(isValidSudoku(board2));
+		p(isValidSudokuImp(board));
+		p(isValidSudokuImp(board2));
 	}
-	private static boolean isValidSodoku(char[][] board) {
+	private static boolean isValidSudoku(char[][] board) {
 		if(board.length < 9 || board == null) return false;
 		for(int i = 0; i < board.length; i++) {
 			char[] col = new char[board[i].length];
@@ -98,30 +100,35 @@ public class ValidSodoku {
 				result[i] = Character.getNumericValue(x[i]);
 		return result;
 	}
-	/** Improved approach **/
-	public boolean isValidSudokuImp(char[][] board) {
-        HashSet<String> h1 = new HashSet<String>();
+	/** Improved approach - easier to understand;
+	 * But space suffers.
+	 * 
+	 *  Essentially we are throwing every iteration of result into a hashset and 
+	 *  checking if what we are to throw next has already been inclduded in the previous
+	 *  pile. if so return false;
+	 * **/
+	public static boolean isValidSudokuImp(char[][] board) {
+        HashSet<String> h1 = new HashSet<>();
         
         for(int i=0; i < 9; i++){
             for(int j=0; j< 9; j++){
                 if(board[i][j] != '.'){
-                    
-                //Check whether HashSet contains duplicate elements in row and column 
-                if(h1.contains("row" + i + board[i][j]) || h1.contains("col" + j + board[i][j]) ){
-                    return false;
-                }
-                h1.add("row" + i + board[i][j]);
-                h1.add("col" + j + board[i][j]);
-                
-                
-                //Check whether Box contains duplicate elements in it
-                if(h1.contains("box"+ (i/3) + (j/3) + board[i][j])){
-                    return false;
-                }
-                h1.add("box"+ (i/3) + (j/3) + board[i][j]);
+	                //Check whether HashSet contains duplicate elements in row and column 
+	                if(h1.contains("row" + i + board[i][j]) || h1.contains("col" + j + board[i][j]) ){
+	                    return false;
+	                }
+	                h1.add("row" + i + board[i][j]);
+	                h1.add("col" + j + board[i][j]);
+	                
+	                //Check whether Box contains duplicate elements in it
+	                if(h1.contains("box"+ (i/3) + (j/3) + board[i][j])){
+	                    return false;
+	                }
+	                h1.add("box"+ (i/3) + (j/3) + board[i][j]);
                 }
             }
         }
+        p(h1);
         return true;
     }
 }
