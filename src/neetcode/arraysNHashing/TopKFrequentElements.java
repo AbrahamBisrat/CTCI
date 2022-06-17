@@ -16,7 +16,7 @@ import java.util.PriorityQueue;
 public class TopKFrequentElements {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-		p(topKFrequent(new int[] {1, 1, 1, 2, 2, 3, 3, 3, 3}, 1));
+		p(topKFrequent(new int[] {1, 1, 1, 2, 2, 3, 3, 3, 3}, 2));
 	}
 	/* make a frequency map
 	 * go through the sizes and append them to minHeap,
