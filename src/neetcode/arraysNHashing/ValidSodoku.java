@@ -106,7 +106,7 @@ public class ValidSodoku {
 	 *  Essentially we are throwing every iteration of result into a hash-set and 
 	 *  checking if what we are to throw next has already been included in the previous
 	 *  pile. if so return false;
-	 * **/
+	 **/
 	public static boolean isValidSudokuImp(char[][] board) {
         HashSet<String> visited = new HashSet<>();
         
