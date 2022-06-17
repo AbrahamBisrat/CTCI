@@ -15,13 +15,13 @@ import java.util.Map;
 public class Anagrams {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-//		p(isAnagram("anagram", "nagrama"));
-//		p(isAnagramImproved("anagram", "nagrama"));
+		p(isAnagram("anagram", "nagrama"));
+		p(isAnagramImproved("anagram", "nagrama"));
 		String[] strs = {"eaaat","tea","taaaan","atttte","nat","bat"};
-//		p(groupAnagrams(strs));		
-//		p("");
-//		strs = new String[]{"eat","tea","tan","ate","nat","bat","ac","bd","aac","bbd","aacc","bbdd","acc","bdd"};
-//		p(groupAnagrams(strs));
+		p(groupAnagrams(strs));		
+		p("");
+		strs = new String[]{"eat","tea","tan","ate","nat","bat","ac","bd","aac","bbd","aacc","bbdd","acc","bdd"};
+		p(groupAnagrams(strs));
 		p(groupAnagramsImproved(strs));
 	}
 	public static boolean isAnagram(String s, String t) {
@@ -58,6 +58,7 @@ public class Anagrams {
 		Input: strs = ["eat","tea","tan","ate","nat","bat"]
 		Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 	 */
+	@SuppressWarnings("serial")
 	public static List<List<String>> groupAnagrams(String[] strs) {
 		HashMap<HashMap<Character, Integer>, List<String>> map = new HashMap<>();
 		HashMap<Character, Integer> current = new HashMap<>();

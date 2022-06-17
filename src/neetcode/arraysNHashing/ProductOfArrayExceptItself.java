@@ -21,7 +21,7 @@ public class ProductOfArrayExceptItself {
 	public static void p(Object line) { System.out.println(line); }
 	public static void pA(int[] arr) { p(Arrays.toString(arr)); }
 	public static void main(String[] args) {
-//		pA(productExceptSelf(new int[] {1, 2, 3, 4}));
+		pA(productExceptSelf(new int[] {1, 2, 3, 4}));
 		pA(productExceptSelfNeetCode(new int[] {1, 2, 3, 4}));
 	}
 	/* Time Complexity O(N)
