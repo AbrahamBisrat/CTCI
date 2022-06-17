@@ -101,34 +101,34 @@ public class ValidSodoku {
 		return result;
 	}
 	/** Improved approach - easier to understand;
-	 * But space suffers.
+	 * 	But space suffers.
 	 * 
-	 *  Essentially we are throwing every iteration of result into a hashset and 
-	 *  checking if what we are to throw next has already been inclduded in the previous
+	 *  Essentially we are throwing every iteration of result into a hash-set and 
+	 *  checking if what we are to throw next has already been included in the previous
 	 *  pile. if so return false;
 	 * **/
 	public static boolean isValidSudokuImp(char[][] board) {
-        HashSet<String> h1 = new HashSet<>();
+        HashSet<String> visited = new HashSet<>();
         
         for(int i=0; i < 9; i++){
             for(int j=0; j< 9; j++){
                 if(board[i][j] != '.'){
 	                //Check whether HashSet contains duplicate elements in row and column 
-	                if(h1.contains("row" + i + board[i][j]) || h1.contains("col" + j + board[i][j]) ){
+	                if(visited.contains("row" + i + board[i][j]) || visited.contains("col" + j + board[i][j]) ){
 	                    return false;
 	                }
-	                h1.add("row" + i + board[i][j]);
-	                h1.add("col" + j + board[i][j]);
+	                visited.add("row" + i + board[i][j]);
+	                visited.add("col" + j + board[i][j]);
 	                
 	                //Check whether Box contains duplicate elements in it
-	                if(h1.contains("box"+ (i/3) + (j/3) + board[i][j])){
+	                if(visited.contains("box"+ (i/3) + (j/3) + board[i][j])){
 	                    return false;
 	                }
-	                h1.add("box"+ (i/3) + (j/3) + board[i][j]);
+	                visited.add("box"+ (i/3) + (j/3) + board[i][j]);
                 }
             }
         }
-        p(h1);
+        p(visited);
         return true;
     }
 }
