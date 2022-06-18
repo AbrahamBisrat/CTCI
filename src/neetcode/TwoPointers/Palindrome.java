@@ -46,10 +46,9 @@ public class Palindrome {
 	}
 	private static String strip(String input) {
 		String temp = "";
-		for(char each : input.toCharArray()) {
+		for(char each : input.toCharArray())
 			if(each < 96 || each > 96 + 26) continue;
-			temp+=each;
-		}
+			else temp+=each;
 		return temp;
 	}
 }
