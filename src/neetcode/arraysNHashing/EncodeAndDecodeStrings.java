@@ -58,6 +58,22 @@ public class EncodeAndDecodeStrings {
     	}
     	return decodedSet;
     }
+    public static List<String> decodeMem(String str) {
+    	// "lint:;code:;love:;you:;"
+    	List<String> decodedSet = new ArrayList<>();
+    	String temp = "";
+    	str = str.substring(1);
+    	p(str);
+    	for(int i = 0; i < str.length(); i ++) {
+    		if(str.charAt(i) == ':') {
+    			decodedSet.add(temp);
+    			temp="";
+    		} else if(str.charAt(i) != ';'){
+    			temp+=str.charAt(i);    			
+    		}
+    	}
+    	return decodedSet;
+    }
 }
 
 
