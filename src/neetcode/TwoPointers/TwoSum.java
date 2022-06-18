@@ -29,9 +29,13 @@ public class TwoSum {
 	public static void p(Object line) { System.out.println(line); }
 	public static void pA(int[] arr) { p(Arrays.toString(arr)); }
 	public static void main(String[] args) {
-		pA(twoSum(new int[] {2, 7, 11, 15}, 9));
-		pA(twoSum(new int[] {2, 3, 4}, 6));
-		pA(twoSum(new int[] {-1, 0}, -1));
+//		pA(twoSum(new int[] {2, 7, 11, 15}, 9));
+//		pA(twoSum(new int[] {2, 3, 4}, 6));
+//		pA(twoSum(new int[] {-1, 0}, -1));
+
+		pA(twoSumTwoPointer(new int[] {2, 7, 11, 15}, 9));
+		pA(twoSumTwoPointer(new int[] {2, 3, 4}, 6));
+		pA(twoSumTwoPointer(new int[] {-1, 0}, -1));
 	}
 	public static int[] twoSum(int[] arr, int k) {
 		for(int i = arr.length - 1; i >= 0; i--) {
@@ -40,6 +44,24 @@ public class TwoSum {
 				if(arr[i] + arr[j] == k)
 					return new int[] {j+1, i+1};
 			}
+		}
+		return null;
+	}
+	/** Better with Two pointer **/
+	public static int[] twoSumTwoPointer(int[] arr, int k) {
+		if(arr.length<=1 || arr==null) return null;
+		int left = 0;
+		int right = arr.length - 1;
+		while(right > left) {
+			if(arr[right] > k && k > 0) {
+				right--;
+				continue;
+			}
+			if(arr[left] + arr[right] == k)
+				return new int[] {left+1, right+1};
+			if(arr[right] + arr[left] > k)
+				right--;
+			else left++;
 		}
 		return null;
 	}
