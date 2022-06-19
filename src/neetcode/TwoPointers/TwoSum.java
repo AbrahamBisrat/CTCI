@@ -29,14 +29,15 @@ public class TwoSum {
 	public static void p(Object line) { System.out.println(line); }
 	public static void pA(int[] arr) { p(Arrays.toString(arr)); }
 	public static void main(String[] args) {
-//		pA(twoSum(new int[] {2, 7, 11, 15}, 9));
-//		pA(twoSum(new int[] {2, 3, 4}, 6));
-//		pA(twoSum(new int[] {-1, 0}, -1));
-
+		pA(twoSum(new int[] {2, 7, 11, 15}, 9));
+		pA(twoSum(new int[] {2, 3, 4}, 6));
+		pA(twoSum(new int[] {-1, 0}, -1));
+		
 		pA(twoSumTwoPointer(new int[] {2, 7, 11, 15}, 9));
 		pA(twoSumTwoPointer(new int[] {2, 3, 4}, 6));
 		pA(twoSumTwoPointer(new int[] {-1, 0}, -1));
 	}
+	
 	public static int[] twoSum(int[] arr, int k) {
 		for(int i = arr.length - 1; i >= 0; i--) {
 			if(arr[i] > k && k > 0) continue;
