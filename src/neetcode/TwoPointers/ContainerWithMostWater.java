@@ -1,6 +1,8 @@
 package neetcode.TwoPointers;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * Given an integer array height of length n. There are n vertical lines drawn such that the 
@@ -24,6 +26,7 @@ public class ContainerWithMostWater {
 	private static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
 		p(containerWithMostWater(new int[] {1,8,6,2,5,4,8,3,7}));
+		p(containerWithMostWater2(new int[] {1,8,6,2,5,4,8,3,7}));
 	}
 	public static int containerWithMostWater(int[] arr) {
 		int maxSize = 0;
@@ -36,6 +39,21 @@ public class ContainerWithMostWater {
 				maxSize = Math.max(maxSize, width * height);
 				right--;
 			}
+		}
+		return maxSize;
+	}
+	// Inspired by Neetcode.io solution
+	public static int containerWithMostWater2(int[] heights) {
+		int maxSize = 0;
+		int left = 0;
+		int right = heights.length - 1;
+		while(right > left) {
+			int width = right - left;
+			int area = Math.min(heights[left], heights[right]);
+			maxSize = Math.max(maxSize, width * area);
+			if(heights[left] < heights[right])
+				left++;
+			else right--;
 		}
 		return maxSize;
 	}
