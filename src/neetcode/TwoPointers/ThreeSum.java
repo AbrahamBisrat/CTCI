@@ -49,8 +49,14 @@ public class ThreeSum {
 				while(right > left) {
 					if(arr[left] + arr[right] == target) {
 						temp = Arrays.asList(arr[i], arr[left], arr[right]);
-						if(!resultSet.contains(temp))
-							resultSet.add(temp);
+//						if(!resultSet.contains(temp))	// checking is not required.
+						resultSet.add(temp);
+						while (left < right && arr[left] == arr[left + 1]) { // escape duplicates
+                            left++;
+                        }
+                        while (left < right && arr[right] == arr[right - 1]) {
+                            right--;
+                        }
 						right--;
 						left++;
 					} else if(arr[left] + arr[right] > target) {
