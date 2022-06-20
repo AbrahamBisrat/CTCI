@@ -25,7 +25,7 @@ import java.util.Arrays;
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
  */
-public class TwoSum {
+public class TwoSum2{
 	public static void p(Object line) { System.out.println(line); }
 	public static void pA(int[] arr) { p(Arrays.toString(arr)); }
 	public static void main(String[] args) {
