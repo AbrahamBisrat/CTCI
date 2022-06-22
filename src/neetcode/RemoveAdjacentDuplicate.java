@@ -11,8 +11,8 @@ public class RemoveAdjacentDuplicate {
 		if(input.length() == 0 || input == null) return 0;
 		Stack<Character> stack = new Stack<>();
 		for(char letter : input.toCharArray()) {
-			if(!stack.isEmpty() && 
-					(stack.peek() == '1' && letter == '0' 
+			if(!stack.isEmpty() &&
+					(stack.peek() == '1' && letter == '0'
 					|| stack.peek() == '0' && letter == '1')) {
 				stack.pop();
 			} else stack.push(letter);
