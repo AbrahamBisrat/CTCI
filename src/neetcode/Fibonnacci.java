@@ -13,5 +13,5 @@ public class Fibonnacci {
 		p(fib(14));
 		p(fib(4));
 	}
-	public static int fib(int x) { return x <= 1? 1 : fib(x - 1) + fib(x - 2); }
+	public static int fib(int x) { return x <= 1 ? 1 : fib(x - 1) + fib(x - 2); }
 }
