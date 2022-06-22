@@ -1,7 +1,14 @@
 package neetcode;
 
 import java.util.Stack;
-
+/**
+ * Given a string containing only ones zeros and astriks
+ * remove adjacent duplicate of 10 or 01 and return the size.
+ * example 1: 10*00101111 -> *11 thus the size would be 3.
+ * 
+ * @author Er. Abraham Bisrat https://github.com/abrahammehari
+ *
+ */
 public class RemoveAdjacentDuplicate {
 	public static void p(Object line) { System.out.println(line); }
 
