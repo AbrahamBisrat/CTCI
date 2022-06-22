@@ -3,9 +3,7 @@ package neetcode;
 import java.util.Stack;
 
 public class RemoveAdjacentDuplicate {
-	public static void p(Object line) {
-		System.out.println(line);
-	}
+	public static void p(Object line) { System.out.println(line); }
 
 	public static void main(String[] args) {
 		p(removeAdj("10010**1010"));
