@@ -1,22 +1,22 @@
 package neetcode;
 
+import java.util.Stack;
+
 public class RemoveAdjacentDuplicate {
+	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-		System.out.println(solution("100101010"));
+		p(removeAdj("10010**1010"));
 	}
-	static int solution(String s) {
-		
-	    for(int i = 0; i < s.length() - 1; i++) {
-	    	char prev = s.charAt(i);
-	    	char next = s.charAt(i + 1);
-	    	
-	    	if(prev == '1' && next == '0' || prev == '0' && next == '1') {
-	    		s = s.substring(i - 1, i + 1);
-	    		System.out.println(s);
-	    		
-	    	}
-	    }
-		
-		return s.length();
+	private static int removeAdj(String input) {
+		if(input.length() == 0 || input == null) return 0;
+		Stack<Character> stack = new Stack<>();
+		for(char letter : input.toCharArray()) {
+			if(!stack.isEmpty() && 
+					(stack.peek() == '1' && letter == '0' 
+					|| stack.peek() == '0' && letter == '1')) {
+				stack.pop();
+			} else stack.push(letter);
+		}
+		return stack.size();
 	}
 }
