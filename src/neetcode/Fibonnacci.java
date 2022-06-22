@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Challenge: Write the most elegant fib solution ever. Why? because it is cool....
+ * Challenge: Write the most elegant fibonacci solution ever. Why? because it is cool....
  * 
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
