@@ -1,4 +1,4 @@
-package neetcode;
+package neetcode.dynamicProgramming;
 
 import java.util.HashMap;
 import java.util.Map;
