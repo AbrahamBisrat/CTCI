@@ -38,12 +38,13 @@ import java.util.Arrays;
  */
 public class ProductExceptSelf {
 	public static void p(Object line) { System.out.println(line); }
+	public static void pA(int[] arr) { p(Arrays.toString(arr)); }
 	public static void main(String[] args) {
-		p(productExceptSelf(new int[] {1, 2, 3, 4, 5}, 2));
+		pA(productExceptSelf(new int[] {1, 2, 3, 4, 5}));
 //		p(productExceptSelf(new int[] {-1, 1, 0, -3, 3}));
 	}
-	private static int productExceptSelf(int[] arr, int n) {
-		if(arr.length == 0 || arr == null) return 0;
+	private static int[] productExceptSelf(int[] arr) {
+		if(arr.length == 0 || arr == null) return null;
 		int length = arr.length;
 		int[] inOrder = new int[length];
 		int[] inReverse = new int[length];
@@ -64,6 +65,6 @@ public class ProductExceptSelf {
 		
 		p(Arrays.toString(inOrder));
 		p(Arrays.toString(inReverse));
-		return products[n];
+		return products;
 	}
 }
