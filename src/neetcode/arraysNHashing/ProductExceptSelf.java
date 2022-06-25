@@ -1,4 +1,7 @@
 package neetcode.arraysNHashing;
+
+import java.util.Arrays;
+
 /**
  * Given an integer array nums, return an array answer such that answer[i] is equal to the product of 
  * all the elements of nums except nums[i];
@@ -36,12 +39,31 @@ package neetcode.arraysNHashing;
 public class ProductExceptSelf {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-		p(productExceptSelf(new int[] {1, 2, 3, 4}));
-		p(productExceptSelf(new int[] {-1, 1, 0, -3, 3}));
+		p(productExceptSelf(new int[] {1, 2, 3, 4, 5}, 2));
+//		p(productExceptSelf(new int[] {-1, 1, 0, -3, 3}));
 	}
-	private static int[] productExceptSelf(int[] arr) {
+	private static int productExceptSelf(int[] arr, int n) {
+		if(arr.length == 0 || arr == null) return 0;
+		int length = arr.length;
+		int[] inOrder = new int[length];
+		int[] inReverse = new int[length];
+		int[] products = new int[length];
 		
+		for(int i = 0; i < arr.length; i++)
+			if(i > 0) inOrder[i] = arr[i] * inOrder[i - 1];
+			else inOrder[i] = arr[i];
+		for(int i = arr.length - 1; i >= 0; i--)
+			if(i < arr.length - 1) inReverse[i] = arr[i] * inReverse[i+1];
+			else inReverse[i] = arr[i];
 		
-		return null;
+		for(int i = 0; i < arr.length; i++) {
+			if(i == arr.length - 1) products[i] = inOrder[i - 1];
+			else if(i == 0) products[i] = inReverse[i+1];
+			else products[i] = inOrder[i-1] * inReverse[i+1];
+		}
+		
+		p(Arrays.toString(inOrder));
+		p(Arrays.toString(inReverse));
+		return products[n];
 	}
 }
