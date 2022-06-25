@@ -1,7 +1,5 @@
 package neetcode.dynamicProgramming;
 
-import java.util.Arrays;
-
 /**
  * Given a grid find a string in any direction
  * 
@@ -11,15 +9,12 @@ import java.util.Arrays;
 public class WordSearch {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-		p(wordSearch(new char[][] { {'A','B','C','E'},
-									{'S','F','C','S'},
-									{'A','D','E','E'}}, "ABCCED"));
-		p(wordSearch(new char[][] { {'A','B','C','E'},
-									{'S','F','C','S'},
-									{'A','D','E','E'}}, "ABCB"));
-		p(wordSearch(new char[][] { {'A','B','C','E'},
-									{'S','F','C','S'},
-									{'A','D','E','E'}}, "SEE"));
+		char[][] board = {{'A','B','C','E'},
+						  {'S','F','C','S'},
+						  {'A','D','E','E'}};
+		p(wordSearch(board, "ABCCED"));
+		p(wordSearch(board, "ABCB"));
+		p(wordSearch(board, "SEE"));
 		
 	}
 	static boolean wordSearch(char[][] grid, String target) {
