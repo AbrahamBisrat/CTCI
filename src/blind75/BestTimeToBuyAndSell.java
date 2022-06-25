@@ -26,7 +26,8 @@ public class BestTimeToBuyAndSell {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
 //		p(bestTimeToBuyAndSell(new int[] {7, 1, 5, 3, 6, 4}));
-		p(bestTimeToBuyAndSellOptimized(new int[] {7, 1, 5, 3, 6, 4}));
+//		p(bestTimeToBuyAndSellOptimized(new int[] {7, 1, 5, 3, 6, 4}));
+		p(bestTimeToBuyAndSellOptimized(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
 	}
 	/* Choose a single day to buy the stock and choose another day to sell the stock
 	 * the selling date must be later than the buying date.

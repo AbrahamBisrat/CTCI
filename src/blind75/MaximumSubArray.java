@@ -24,10 +24,10 @@ package blind75;
 public class MaximumSubArray {
 	public static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-//		p(maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
-//		p(maxSubArray(new int[] {-2,-1}));
-//		p(maxSubArrayBetter(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
-//		p(maxSubArrayBetter(new int[] {-2,-1}));
+		p(maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
+		p(maxSubArray(new int[] {-2,-1}));
+		p(maxSubArrayBetter(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
+		p(maxSubArrayBetter(new int[] {-2,-1}));
 		p(maxSubArrayBest(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
 		p(maxSubArrayBest(new int[] {-2,-1}));
 	}
