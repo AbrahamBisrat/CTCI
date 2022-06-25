@@ -1,5 +1,6 @@
 package neetcode.dynamicProgramming;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,8 +25,11 @@ public class SodokuSolver {
 		for(int i = 0; i < grid.length; i++)
 			if(!checkColumn(grid, i))
 				return false;
+		for(int[] each : grid)
+			p(Arrays.toString(each));
 		return true; 
 	}
+	
 	static boolean checkColumn(int[][] grid, int c) {
 		int target = grid[0][c] + grid[1][c] + grid[2][c]
 					+ grid[3][c] + grid[4][c] + grid[5][c]
