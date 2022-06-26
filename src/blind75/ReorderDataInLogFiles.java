@@ -35,7 +35,7 @@ import java.util.Comparator;
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
  */
-public class ReorderDatanLogFiles {
+public class ReorderDataInLogFiles {
 	static void p(Object line) { System.out.println(line); }
 	static void pA(Object[] arr) { p(Arrays.toString(arr)); }
 	public static void main(String[] args) {
