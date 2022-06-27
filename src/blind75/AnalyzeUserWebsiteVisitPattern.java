@@ -78,13 +78,12 @@ public class AnalyzeUserWebsiteVisitPattern {
 		p(topThreeSequenceVisits(usernames, timestamps, websitesVisited));
 	}
 
+	// make a list of websites visited for every user -> Map<Username,
+	// List<websites>>
+	// make a contigious sequence of three, and add them to a sequences map. ->
+	// build a freqMap for the sequences,
+	// get the top three
 	static List<String> topThreeSequenceVisits(String[] usernames, int[] timestamps, String[] websitesVisisted) {
-		// make a list of websites visited for every user -> Map<Username,
-		// List<websites>>
-		// make a contigious sequence of three, and add them to a sequences map. ->
-		// build a freqMap for the sequences,
-		// get the top three
-
 		Map<String, List<String>> usersHistory = new HashMap<>();
 		for (int i = 0; i < usernames.length; i++) {
 			String username = usernames[i];
@@ -95,41 +94,23 @@ public class AnalyzeUserWebsiteVisitPattern {
 //		p(usersHistory);
 //		p(" ");
 
-		// go through each users history and make a sequence of three and add it to freq
-		// map
+		// go through each users history and make a sequence of three and add it to freqMap
 		String maxSequence = "";
 		int maxSequenceFreq = 0;
 		Map<String, Integer> sequenceMap = new HashMap<>();
 		for (String user : usersHistory.keySet()) {
-			// if the user has less than three page visits, ignore it
 			int length = usersHistory.get(user).size();
-			if (length < 3)
-				continue;
+			// if the user has less than three page visits, ignore it
+			if (length < 3) continue;
 			List<String> userHistory = usersHistory.get(user);
-
-			// improve via sliding window of three elements
-			// int [first++, second++, third++] until third hits size()
-//			for(int i = 0; i < length - 2; i++) {
-//				for(int j = i + 1; j < length - 1; j++) {
-//					for(int k = j + 1; k < length; k++) {
-//						String sequence3 = userHistory.get(i) + " " + userHistory.get(j) + " " + userHistory.get(k);
-//						if(!sequenceMap.containsKey(sequence3))
-//							sequenceMap.put(sequence3, 0);
-//						sequenceMap.put(sequence3, sequenceMap.get(sequence3) + 1);
-//						// keep track of the biggest value; // if asked kth elements, pop them into a heap
-//						if(sequenceMap.get(sequence3) > maxSequenceFreq) {
-//							maxSequenceFreq = sequenceMap.get(sequence3);
-//							maxSequence = sequence3;
-//						}
-//					}
-//				}
+			
+			// generate sequences
 			for (int i = 0; i < length - 2; i++) {
 				String sequence3 = userHistory.get(i) + " " + userHistory.get(i + 1) + " " + userHistory.get(i + 2);
 				if (!sequenceMap.containsKey(sequence3))
 					sequenceMap.put(sequence3, 0);
 				sequenceMap.put(sequence3, sequenceMap.get(sequence3) + 1);
-				// keep track of the biggest value; // if asked kth elements, pop them into a
-				// heap
+				// keep track of the biggest value;
 				if (sequenceMap.get(sequence3) > maxSequenceFreq) {
 					maxSequenceFreq = sequenceMap.get(sequence3);
 					maxSequence = sequence3;
