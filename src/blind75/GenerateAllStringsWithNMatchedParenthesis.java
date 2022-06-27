@@ -24,37 +24,26 @@ public class GenerateAllStringsWithNMatchedParenthesis {
 	}
 	static List<String> generateAllN(int n) {
 		if(n <= 0) return null;
-		genAll(n, n, "", n);
-		return matchedParenthesis;
+		return genAll(n, n, "", new ArrayList<>());
 	}
 	
 	// the states are the right and left parenthesis numbers
 	// also the string that we have so far.
 	// and for every step as long as we have more left than right, and left != zero,
 	// we can have two steps for it, with and without the right parenthesis.
-	static List<String> matchedParenthesis = new ArrayList<>();
-	static void genAll(int left, int right, String result, int target) {
-		if(left > 0)
-			genAll(left - 1, right, result + "(", target);
+	static List<String> genAll(int left, int right, String result, List<String> list) {
 		
-		if(right > left)
-			genAll(left, right - 1, result + ")", target);
+		if(left > 0) genAll(left - 1, right, result + "(", list);
 		
-		else if(right == 0 && left == 0)
-			matchedParenthesis.add(result);
-		return;
+		if(right > left) genAll(left, right - 1, result + ")", list);
+		
+		if(right == 0 && left == 0) list.add(result);
+		
+		return list;
 	}
 	
 	/*
-	 * Recurssion format
-	 * 
-	 * Base case
-	 * 
-	 * Termination
-	 * 
-	 * work + work - 1
-	 * 
-	 * return work
-	 * 
+	 * 	for every iteration Go two valid ways till base case:
+	 *  when base case, add it to the list and return;
 	 */
 }
