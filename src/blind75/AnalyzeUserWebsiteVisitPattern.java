@@ -7,146 +7,137 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Problem statement:
-	You are given two string arrays username and website and an integer array timestamp. 
-	All the given arrays are of the same length and the tuple 
-	[username[i], website[i], timestamp[i]] 
-	indicates that the user username[i] visited the website website[i] at time timestamp[i].
-	
-	A pattern is a list of three websites (not necessarily distinct).
-	
-	For example, ["home", "away", "love"], ["leetcode", "love", "leetcode"], 
-	and ["luffy", "luffy", "luffy"] are all patterns.
-	The score of a pattern is the number of users that visited all the websites 
-	in the pattern in the same order they appeared in the pattern.
-	
-	For example, if the pattern is ["home", "away", "love"], the score is the number 
-	of users x such that x visited "home" then visited "away" and visited "love" after that.
-	Similarly, if the pattern is ["leetcode", "love", "leetcode"], the score is 
-	the number of users x such that x visited "leetcode" then visited "love" and visited 
-	"leetcode" one more time after that.
-	Also, if the pattern is ["luffy", "luffy", "luffy"], the score is the number of 
-	users x such that x visited "luffy" three different times at different timestamps.
-	Return the pattern with the largest score. If there is more than one pattern with 
-	the same largest score, return the lexicographically smallest such pattern.
-	
-	Example 1:
-	
-	Input: 
-	username = ["joe","joe","joe","james","james","james","james","mary","mary","mary"], 
-	timestamp = [1,2,3,4,5,6,7,8,9,10], 
-	website = ["home","about","career","home","cart","maps","home","home","about","career"]
-	
-	Output: ["home","about","career"]
-	
-	Explanation: The tuples in this example are:
-	["joe","home",1],
-	["joe","about",2],
-	["joe","career",3],
-	["james","home",4],
-	["james","cart",5],
-	["james","maps",6],
-	["james","home",7],
-	["mary","home",8],
-	["mary","about",9], and 
-	["mary","career",10].
-	
-	The pattern ("home", "about", "career") has score 2 (joe and mary).
-	The pattern ("home", "cart", "maps") has score 1 (james).
-	The pattern ("home", "cart", "home") has score 1 (james).
-	The pattern ("home", "maps", "home") has score 1 (james).
-	The pattern ("cart", "maps", "home") has score 1 (james).
-	The pattern ("home", "home", "home") has score 0 (no user visited home 3 times).
-	
-	Example 2:
-	Input: 
-	username = ["ua","ua","ua","ub","ub","ub"], 
-	timestamp = [1,2,3,4,5,6], 
-	website = ["a","b","a","a","b","c"]
-	
-	Output: ["a","b","a"]
-	
-	Constraints:
-	3 <= username.length <= 50
-	1 <= username[i].length <= 10
-	timestamp.length == username.length
-	1 <= timestamp[i] <= 109
-	website.length == username.length
-	1 <= website[i].length <= 10
-	username[i] and website[i] consist of lowercase English letters.
-	It is guaranteed that there is at least one user who visited at least three websites.
-	All the tuples [username[i], timestamp[i], website[i]] are unique.
+ * Problem statement: You are given two string arrays username and website and
+ * an integer array timestamp. All the given arrays are of the same length and
+ * the tuple [username[i], website[i], timestamp[i]] indicates that the user
+ * username[i] visited the website website[i] at time timestamp[i].
+ * 
+ * A pattern is a list of three websites (not necessarily distinct).
+ * 
+ * For example, ["home", "away", "love"], ["leetcode", "love", "leetcode"], and
+ * ["luffy", "luffy", "luffy"] are all patterns. The score of a pattern is the
+ * number of users that visited all the websites in the pattern in the same
+ * order they appeared in the pattern.
+ * 
+ * For example, if the pattern is ["home", "away", "love"], the score is the
+ * number of users x such that x visited "home" then visited "away" and visited
+ * "love" after that. Similarly, if the pattern is ["leetcode", "love",
+ * "leetcode"], the score is the number of users x such that x visited
+ * "leetcode" then visited "love" and visited "leetcode" one more time after
+ * that. Also, if the pattern is ["luffy", "luffy", "luffy"], the score is the
+ * number of users x such that x visited "luffy" three different times at
+ * different timestamps. Return the pattern with the largest score. If there is
+ * more than one pattern with the same largest score, return the
+ * lexicographically smallest such pattern.
+ * 
+ * Example 1:
+ * 
+ * Input: username =
+ * ["joe","joe","joe","james","james","james","james","mary","mary","mary"],
+ * timestamp = [1,2,3,4,5,6,7,8,9,10], website =
+ * ["home","about","career","home","cart","maps","home","home","about","career"]
+ * 
+ * Output: ["home","about","career"]
+ * 
+ * Explanation: The tuples in this example are: ["joe","home",1],
+ * ["joe","about",2], ["joe","career",3], ["james","home",4],
+ * ["james","cart",5], ["james","maps",6], ["james","home",7],
+ * ["mary","home",8], ["mary","about",9], and ["mary","career",10].
+ * 
+ * The pattern ("home", "about", "career") has score 2 (joe and mary). The
+ * pattern ("home", "cart", "maps") has score 1 (james). The pattern ("home",
+ * "cart", "home") has score 1 (james). The pattern ("home", "maps", "home") has
+ * score 1 (james). The pattern ("cart", "maps", "home") has score 1 (james).
+ * The pattern ("home", "home", "home") has score 0 (no user visited home 3
+ * times).
+ * 
+ * Example 2: Input: username = ["ua","ua","ua","ub","ub","ub"], timestamp =
+ * [1,2,3,4,5,6], website = ["a","b","a","a","b","c"]
+ * 
+ * Output: ["a","b","a"]
+ * 
+ * Constraints: 3 <= username.length <= 50 1 <= username[i].length <= 10
+ * timestamp.length == username.length 1 <= timestamp[i] <= 109 website.length
+ * == username.length 1 <= website[i].length <= 10 username[i] and website[i]
+ * consist of lowercase English letters. It is guaranteed that there is at least
+ * one user who visited at least three websites. All the tuples [username[i],
+ * timestamp[i], website[i]] are unique.
  * 
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
  */
 public class AnalyzeUserWebsiteVisitPattern {
-	static void p(Object line) { System.out.println(line); }
+	public static void p(Object line) { System.out.println(line); }
 	public static void pA(Object[] arr) { System.out.println(Arrays.toString(arr)); }
 	public static void main(String[] args) {
-		String[] usernames = {"joe","joe","joe","james","james","james","james","mary","mary","mary"};
-		int[] timestamps = {1,2,3,4,5,6,7,8,9,10};
-		String[] websitesVisited = {"home","about","career","home","cart","maps","home","home","about","career"};
-		
+		String[] usernames = { "joe", "joe", "joe", "james", "james", "james", "james", "mary", "mary", "mary" };
+		int[] timestamps = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		String[] websitesVisited = { "home", "about", "career", "home", "cart", "maps", "home", "home", "about",
+				"career" };
+
 		p(topThreeSequenceVisits(usernames, timestamps, websitesVisited));
 	}
+
 	static List<String> topThreeSequenceVisits(String[] usernames, int[] timestamps, String[] websitesVisisted) {
-		// make a list of websites visited for every user -> Map<Username, List<websites>>
-		// make a contigious sequence of three, and add them to a sequences map. -> 
-		// build a freqMap for the sequences, 
+		// make a list of websites visited for every user -> Map<Username,
+		// List<websites>>
+		// make a contigious sequence of three, and add them to a sequences map. ->
+		// build a freqMap for the sequences,
 		// get the top three
-		
+
 		Map<String, List<String>> usersHistory = new HashMap<>();
-		for(int i = 0; i < usernames.length; i++) {
+		for (int i = 0; i < usernames.length; i++) {
 			String username = usernames[i];
-			if(!usersHistory.containsKey(username))
+			if (!usersHistory.containsKey(username))
 				usersHistory.put(username, new ArrayList<String>());
 			usersHistory.get(username).add(websitesVisisted[i]);
 		}
 //		p(usersHistory);
 //		p(" ");
-		
-		// go through each users history and make a sequence of three and add it to freq map
+
+		// go through each users history and make a sequence of three and add it to freq
+		// map
 		String maxSequence = "";
 		int maxSequenceFreq = 0;
 		Map<String, Integer> sequenceMap = new HashMap<>();
-		for(String user : usersHistory.keySet()) {
+		for (String user : usersHistory.keySet()) {
 			// if the user has less than three page visits, ignore it
 			int length = usersHistory.get(user).size();
-			if(length < 3) continue;
+			if (length < 3)
+				continue;
 			List<String> userHistory = usersHistory.get(user);
-			
-			for(int i = 0; i < length - 2; i++) {
-				for(int j = i + 1; j < length - 1; j++) {
-					for(int k = j + 1; k < length; k++) {
-						String sequence3 = userHistory.get(i) + " " + userHistory.get(j) + " " + userHistory.get(k);
-						if(!sequenceMap.containsKey(sequence3))
-							sequenceMap.put(sequence3, 0);
-						sequenceMap.put(sequence3, sequenceMap.get(sequence3) + 1);
-						// keep track of the biggest value; // if asked kth elements, pop them into a heap
-						if(sequenceMap.get(sequence3) > maxSequenceFreq) {
-							maxSequenceFreq = sequenceMap.get(sequence3);
-							maxSequence = sequence3;
-						}
-					}
+
+			// improve via sliding window of three elements
+			// int [first++, second++, third++] until third hits size()
+//			for(int i = 0; i < length - 2; i++) {
+//				for(int j = i + 1; j < length - 1; j++) {
+//					for(int k = j + 1; k < length; k++) {
+//						String sequence3 = userHistory.get(i) + " " + userHistory.get(j) + " " + userHistory.get(k);
+//						if(!sequenceMap.containsKey(sequence3))
+//							sequenceMap.put(sequence3, 0);
+//						sequenceMap.put(sequence3, sequenceMap.get(sequence3) + 1);
+//						// keep track of the biggest value; // if asked kth elements, pop them into a heap
+//						if(sequenceMap.get(sequence3) > maxSequenceFreq) {
+//							maxSequenceFreq = sequenceMap.get(sequence3);
+//							maxSequence = sequence3;
+//						}
+//					}
+//				}
+			for (int i = 0; i < length - 2; i++) {
+				String sequence3 = userHistory.get(i) + " " + userHistory.get(i + 1) + " " + userHistory.get(i + 2);
+				if (!sequenceMap.containsKey(sequence3))
+					sequenceMap.put(sequence3, 0);
+				sequenceMap.put(sequence3, sequenceMap.get(sequence3) + 1);
+				// keep track of the biggest value; // if asked kth elements, pop them into a
+				// heap
+				if (sequenceMap.get(sequence3) > maxSequenceFreq) {
+					maxSequenceFreq = sequenceMap.get(sequence3);
+					maxSequence = sequence3;
 				}
 			}
 		}
-//		p(sequenceMap);
+		p(sequenceMap);
 		List<String> maxSequeceVisited = new ArrayList<>(Arrays.asList(maxSequence.split(" ")));
 		return maxSequeceVisited;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
