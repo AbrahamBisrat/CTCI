@@ -29,6 +29,9 @@ public class GenerateAllStringsWithNMatchedParenthesis {
 	/*
 	 * 	for every iteration Go two valid ways till base case:
 	 *  when base case, add it to the list and return;
+	 *  
+	 *  This is in fact DFS via recursion:
+	 *  First go all the way to the base "(((" and back track from there. 
 	 */
 	static List<String> genAll(int left, int right, String result, List<String> list) {
 		
