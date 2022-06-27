@@ -26,11 +26,10 @@ public class GenerateAllStringsWithNMatchedParenthesis {
 		if(n <= 0) return null;
 		return genAll(n, n, "", new ArrayList<>());
 	}
-	
-	// the states are the right and left parenthesis numbers
-	// also the string that we have so far.
-	// and for every step as long as we have more left than right, and left != zero,
-	// we can have two steps for it, with and without the right parenthesis.
+	/*
+	 * 	for every iteration Go two valid ways till base case:
+	 *  when base case, add it to the list and return;
+	 */
 	static List<String> genAll(int left, int right, String result, List<String> list) {
 		
 		if(left > 0) genAll(left - 1, right, result + "(", list);
@@ -41,9 +40,4 @@ public class GenerateAllStringsWithNMatchedParenthesis {
 		
 		return list;
 	}
-	
-	/*
-	 * 	for every iteration Go two valid ways till base case:
-	 *  when base case, add it to the list and return;
-	 */
 }
