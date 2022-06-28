@@ -50,8 +50,8 @@ public class ReverseWordsInString {
         // split them via spaces n
         // create a new array with n size and put the elements there
         // reverse the indices
-        String[] spaceDel = s.split(" ");
         
+		String[] spaceDel = s.split(" ");
         String result = "";
         for(int i = spaceDel.length - 1; i >= 0; i--) {
         	String current = spaceDel[i].strip();
@@ -60,7 +60,6 @@ public class ReverseWordsInString {
         		result += " ";
         	result += current;
         }
-        
         return result;
     }
 }
