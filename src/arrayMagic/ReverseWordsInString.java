@@ -60,12 +60,11 @@ public class ReverseWordsInString {
         
         String result = "";
         for(int i = spaceDel.length - 1; i >= 0; i--) {
-        	if(i != spaceDel.length - 1) 
-        		result += " ";
         	String current = spaceDel[i].strip();
+        	if(current.length() == 0) continue;
+        	if(i != spaceDel.length - 1)
+        		result += " ";
         	result += current;
-        	p("n " + spaceDel[i] + "'");
-//        	p("r " + spaceDel[i].strip() + "'");
         }
         
         return result;
