@@ -1,7 +1,5 @@
 package arrayMagic;
 
-import java.util.Arrays;
-
 /**
  * Given an input string s, reverse the order of the words.
 
@@ -32,7 +30,8 @@ import java.util.Arrays;
 	There is at least one word in s.
 	 
 	
-	Follow-up: If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?
+	Follow-up: If the string data type is mutable in your language, 
+	can you solve it in-place with O(1) extra space?
  * 
  * @author Er. Abraham Bisrat https://github.com/abrahammehari
  *
@@ -51,12 +50,7 @@ public class ReverseWordsInString {
         // split them via spaces n
         // create a new array with n size and put the elements there
         // reverse the indices
-        int length = 1;     // for n spaces, there are n + 1 elements
-        for(char c : s.toCharArray())
-            if(c == ' ') length++;
-        
-        String[] spaceDel = new String[length];
-        spaceDel = s.split(" ");
+        String[] spaceDel = s.split(" ");
         
         String result = "";
         for(int i = spaceDel.length - 1; i >= 0; i--) {
