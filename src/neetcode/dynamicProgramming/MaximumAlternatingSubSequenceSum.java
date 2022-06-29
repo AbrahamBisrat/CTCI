@@ -51,7 +51,7 @@ public class MaximumAlternatingSubSequenceSum {
 			int current = nums[i];
 			int odd = nums[i+1];
 			int even = nums[i+2];
-			dp[i] = Math.max(current, (current - odd + even) );
+			dp[i] = Math.max(current, current - odd + even);
 			i++;
 		p(Arrays.toString(dp));
 		}
