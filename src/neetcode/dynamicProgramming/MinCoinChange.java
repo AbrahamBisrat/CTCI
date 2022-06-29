@@ -31,18 +31,32 @@ public class MinCoinChange {
 	public static void main(String[] args) {
 		p(minCoinChange(new int[] {1, 2, 5}, 11));
 	}
+	/* The choice to either take more coins or not take any more any coins 
+	 * dp[i] = Math.min(dp[i], 1 + dp[i - c]
+	 * 
+	 * Using a single dimenstional array
+	 */
 	static int minCoinChange(int[] coins, int amount) {
-		// [sum, amount of coins required]
-		int[][] dp = new int[amount + 1][coins.length + 1];
+		if(amount <= 0) return 0;
 		
-		for(int i = 1; i < amount; i++) {
-			for(int j = 0; j < coins.length; j++) {
-				dp[i][1] = Math.min(dp[i - 1][1], coins[j]);
+		int[] dp = new int[amount + 1];
+		Arrays.fill(dp, amount + 1);
+		dp[0] = 0;
+		
+		for(int desired = 1; desired < amount + 1; desired++) {
+			for(int change : coins) {
+				if(desired >= change) {
+					dp[desired] = Math.min(dp[desired], 1 + dp[desired - change]);
+					// dp[currCoin] is filled with amount + 1 by default
+				}
 			}
 		}
-		printArray(dp);
+		
+		p(Arrays.toString(dp));
+		
+//		return dp[amount - 1] > amount ? -1 : dp[amount - 1];
 		return 0;
-	}
+    }
 	private static void printArray(int[][] dp) {
 		for(int[] eachArr : dp)
 			pA(eachArr);
