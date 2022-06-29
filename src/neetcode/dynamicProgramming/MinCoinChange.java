@@ -51,11 +51,8 @@ public class MinCoinChange {
 				}
 			}
 		}
-		
 		p(Arrays.toString(dp));
-		
-//		return dp[amount - 1] > amount ? -1 : dp[amount - 1];
-		return 0;
+		return dp[amount] > amount ? -1 : dp[amount];
     }
 	private static void printArray(int[][] dp) {
 		for(int[] eachArr : dp)
