@@ -1,12 +1,11 @@
 package blind75;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
-
+ * Given a string s and a dictionary of strings wordDict, return true if s can be segmented 
+ * into a space-separated sequence of one or more dictionary words.
 	Note that the same word in the dictionary may be reused multiple times in the segmentation.
 	
 	Example 1:
@@ -39,13 +38,13 @@ public class WordBreak {
 	}
 	static boolean wordBreak(String word, List<String> dict) {
 		int length = 0;
-		for(int i = 0; i < word.length(); i++) {
+		for(int left = 0; left < word.length(); left++) {
 			for(String eachDict : dict) {
 				int dictIndex = 0;
-				int right = i;
+				int right = left;
 				while(dictIndex < eachDict.length() && eachDict.charAt(dictIndex++) == word.charAt(right++));
-				if(right - i == eachDict.length()) {
-					length += right - i;
+				if(right - left == eachDict.length()) {
+					length += right - left;
 				}
 			}
 		}
