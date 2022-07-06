@@ -43,9 +43,7 @@ public class WordBreak {
 				int dictIndex = 0;
 				int right = left;
 				while(dictIndex < eachDict.length() && eachDict.charAt(dictIndex++) == word.charAt(right++));
-				if(right - left == eachDict.length()) {
-					length += right - left;
-				}
+				if(right - left == eachDict.length()) length += right - left;
 			}
 		}
 		return word.length() == length;
