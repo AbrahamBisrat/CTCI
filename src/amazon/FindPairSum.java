@@ -28,6 +28,7 @@ public class FindPairSum {
 		p(findPairProductCount(new int[] {1, 2, 16, 4, 4}, 16));
 	}
 	static int findPairProductCount(int[] arr, int target) {
+		if(arr.length <= 1 || arr == null || target <= 0) return 0;
 		// build a frequency map, and look for matches and remove them and continue
 		Set<Integer> uniqueSet = new HashSet<>();
 		for(int i = 0; i < arr.length; i++)
