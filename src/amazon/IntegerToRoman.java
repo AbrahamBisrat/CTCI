@@ -1,8 +1,5 @@
 package amazon;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 	
@@ -50,69 +47,26 @@ import java.util.Queue;
 public class IntegerToRoman {
 	static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-//		p(intToRoman(12345));
-		p(intToRoman(58));
+		p(intToRoman(12345));
+//		p(intToRoman(58));
+//		p(intToRoman(3));
+//		p(intToRoman(1));
 	}
-	/*  -> Approaches
-		take the length of the number into consideration to build the respective Roman equivalent
-		and parse out the to which group of the Roman number group it belongs to.
-		and for parse out the details and add them the number of times of the
-		digit(3 on the second digit is considered as 30 and will be given XXX accordingly)
-		 
-		example -> 58 -> LV|||
-		
-		take the biggest possible and think about the rest after that.
-		a GREEDY approach.
-		
-		example 2 -> 1994
-		This is 1000 + 900 + 90 + 4
-		
-		::
-		Also another approach would be to push each digit into a stack
-		and pop them out one by one and assign the Roman letters in a greedy approach.
-	 */
 	static String intToRoman(int num) {
-	    String inputNum = num + "";
-	    String romanNum = "";
-	    /* I=1, V=5, X=10, L=50, C=100, D=500, M=1000 */
-	    char[] romanDigits = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-	    
-	    Queue<Integer> queue = new LinkedList<>();
-	    for(char digit : inputNum.toCharArray())
-	    	queue.add(Integer.parseInt(digit + ""));
-	    
-	    int index = 0;
-	    while(!queue.isEmpty()) {
-	    	int currentNum = (int) queue.poll();
-	    	while(currentNum > 0) {
-	    		if(currentNum > 4) {
-	    			romanNum += romanDigits[index];
-	    			currentNum -= 5;
-	    		} else {
-	    			romanNum += romanDigits[index];
-	    			currentNum--;
-	    		}
-	    	}
-	    	p(index);
-	    	index++;
-	    }
-	    return  romanNum;
-	}
-	// Better working approach
-	static String intToRomanConv(int num) {
-		String input = num + "";
-		String romanNum = "";
-		char[] romanDigits = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-		
-		int index = 1000;
-		for(int i = input.length(); i >= 0; i--) {
-			int current = num % index;
-			while(current-- > 0) romanNum += romanDigits[6];
-		}
-		return romanNum;
+		if(num <= 0) throw new IllegalArgumentException("Invalid Argument");
+        int[] intCodes = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] romanCodes = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        
+         
+        p(intCodes.length + " " + romanCodes.length);
+        
+        String result = "";
+        for(int i = 0; i < intCodes.length; i++) {
+        	while(num >= intCodes[i]) {
+        		result += romanCodes[i];
+        		num -= intCodes[i];
+        	}
+        }
+        return result;
 	}
 }
-
-
-
-
