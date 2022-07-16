@@ -66,4 +66,13 @@ public class IntegerToRoman {
         }
         return result.toString();
 	}
+	
+	static class RomanPairs {
+		private int value;
+		private String romanLetter;
+		public RomanPairs(int val, String roman) {
+			this.value = val;
+			this.romanLetter = roman;
+		}
+	}
 }

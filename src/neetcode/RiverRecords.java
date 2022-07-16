@@ -11,13 +11,11 @@ public class RiverRecords {
 	}
 	static int riverRecords(List<Integer> levels) {
 		if(levels == null || levels.size() < 1) return -1;
-        int[] arr = new int[levels.size()];
-        for(int i = 0; i < arr.length; i++) arr[i] = levels.get(i);
-        int maxDiff = arr[1] - arr[0];
-        int minElement = arr[0];
+        int maxDiff = levels.get(1) - levels.get(0);
+        int minElement = levels.get(0);
 
-        for (int i = 1; i < arr.length; i++) {
-            int current = arr[i];
+        for (int i = 1; i < levels.size(); i++) {
+            int current = levels.get(i);
             maxDiff = Math.max(maxDiff, current - minElement);
             
             if(current < minElement) minElement = current;
