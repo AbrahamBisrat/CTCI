@@ -39,9 +39,10 @@ package arrayMagic;
 public class ReverseWordsInString {
 	static void p(Object line) { System.out.println(line); }
 	public static void main(String[] args) {
-		p(reverseWords("the sky is blue"));
-		p(reverseWords("   hello world"));
-		p(reverseWords("a good   example"));
+//		p(reverseWords("the sky is blue"));
+//		p(reverseWords("   hello world"));
+//		p(reverseWords("a good   example"));
+		p(reverseWordsNoSplit("the sky is blue"));
 	}
 	static String reverseWords(String s) {
 		if(s == null || s.length() == 0) return "";
@@ -62,4 +63,18 @@ public class ReverseWordsInString {
         }
         return result;
     }
+	static String reverseWordsNoSplit(String s) {
+		StringBuilder reversed = new StringBuilder();
+		String current = "";
+		for(char letter : s.toCharArray()) {
+			if(letter != ' ')
+				current += letter;
+			else {
+				reversed.insert(0, " " + current);
+				current = " ";
+			}
+		}
+		reversed.insert(0, current);
+		return reversed.toString();
+	}
 }
