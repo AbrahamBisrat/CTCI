@@ -82,7 +82,7 @@ public class LogFiles_Assesment {
 			"2020-06-15T20:23:06,840 DSN001 OUT_OF_USE -&gt; IN_STORAGE" };
 		generateAllowDenyList(logs);
 	}
-	/* Time Complexity -> O(log inputs (n)) + O(number of devices) === O(n) 
+	/* Time Complexity -> O(log inputs (n)) + O(number of devices) === O(n)
 	 * Space Complexity -> O(number of devices(hashmap)) + O(allowed devices) + O(denied devices)
 	 * === O(n)
 	 */
@@ -90,7 +90,7 @@ public class LogFiles_Assesment {
 		if(logs == null || logs.length == 0) return;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss,SSS");
 		
-		// <device, latest log entry>
+		// <device Id, latest log entry>
 		Map<String, String> latestLogEntry = new HashMap<>(); // O(number of devices) storage
 		for(String log : logs) {								// O(n) TC
 			String deviceId = log.split(" ")[1];
